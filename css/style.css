@@ -1,0 +1,13 @@
+body {
+  background-color: #f8f8ff;
+}
+
+select#flowerDesign option[value="flower1"] {
+  background-image: url("https://i.imgur.com/Go5xWnn.jpg");
+}
+select#flowerDesign option[value="flower2"] {
+  background-image: url("https://i.imgur.com/rV30eN7.jpg");
+}
+select#flowerDesign option[value="flower3"] {
+  background-image: url("https://i.imgur.com/LwnAG7C.png");
+}
