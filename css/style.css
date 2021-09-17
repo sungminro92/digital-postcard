@@ -1,7 +1,9 @@
 body {
   background-color: #f8f8ff;
+  margin: 0;
+  padding: 0;
 }
-
+/*
 select#flowerDesign option[value="flower1"] {
   background-image: url("https://i.imgur.com/Go5xWnn.jpg");
 }
@@ -10,4 +12,31 @@ select#flowerDesign option[value="flower2"] {
 }
 select#flowerDesign option[value="flower3"] {
   background-image: url("https://i.imgur.com/LwnAG7C.png");
+} */
+#container {
+  max-width: 650px;
+  min-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#p5canvas {
+  width: 350px;
+  margin: 0 auto;
+}
+
+p {
+  margin: 10px 5px;
+  margin: 10 auto;
+}
+
+#message {
+  width: 80%;
+  height: 85px;
+  min-width: 320px;
+  margin: 10px 0px;
+  border: 1px solid #888;
+  outline: none;
+  resize: none;
+  overflow: auto;
 }
