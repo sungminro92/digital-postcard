@@ -1,21 +1,132 @@
 const sketch = function(p) {
 
-  p.setup = function () {
+  let pointA; // curve line top
+  let pointB; // curve line bottom
+  var d = 8;
+  var n = 5;
+  // var k = n/d;
+  let sliderD;
+  var sliderN;
+
+  p.setup = function() {
     p.createCanvas(350,550);
+    sliderD = p.createSlider(1, 20, 10, 1);
+    // sliderD.position(p.width-20, p.height + 50 );
+    sliderN = p.createSlider(1, 20, 10, 1)
+    // sliderN.position(p.width+150, p.height + 50 );
 
   }
 
-  p.draw = function () {
-    p.background(0);
-    p.fill(255,0,0);
-    p.rect(100,100,50);
-    // p.textarea()
+  p.draw = function() {
+    d = sliderD.value();
+    // d = dVal.value();
+    n = sliderN.value();
+    let k = n / d;
+    if(color == false) {
+      p.background(50);
+    } else if(color == true) {
+      p.background(backgroundColor);
+    }
+
+    // p.push();
+    p.translate(p.width/2, p.height/2-100);
+
+    p.beginShape();
+    if(color == false) {
+      p.stroke(255);
+    } else if(color == true) {
+      p.stroke(flowerColor);
+    };
+    // p.stroke(flowerColor);
+    p.strokeWeight(4);
+    p.noFill();
+    for(let a = 0; a < p.TWO_PI * reduceDenominator(n, d); a+= 0.01) {
+      let r = 150 * p.cos(k * a);
+      let x = r * p.cos(a);
+      let y = r * p.sin(a);
+      p.vertex(x, y);
+    };
+    p.endShape(p.CLOSE);
+
+
+    p.translate(-p.width/2, -p.height/2+100);
+
+
+    //CURVE LINE FOR STEM
+    // p.beginShape();
+    // p.curveVertex(5, 5);
+    // p.curveVertex(10, 20);
+    // p.curveVertex(50, 50);
+    // p.curveVertex(100, 100);
+    // // p.curveVertex(32, 91);
+    // p.endShape();
+    // p.curve(100, 50, p.width/2 + 45, p.height/2, p.width/2+85, p.height-115, p.width/2 ,p.height);
+
+    // p.rect(100,100,50);
+    // p.textFont(font);
+    p.noStroke();
+    p.textSize(20);
+    p.textWrap(p.WORD);
+    p.textAlign(p.CENTER);
+    if(color == false) {
+      // p.fill(255);
+      p.fill('#e66465');
+    } else if(color == true) {
+      p.fill(textColor);
+    };
+    p.text(message,25, 350, 300, 300);
+  }
+
+  p.keyPressed = function() {
+    message = $('#message').val();
   }
 
 };
 
-const myP5 = new p5(sketch, 'p5canvas');
+function reduceDenominator(numerator, denominator) {
+    function rec(a, b) {
+        return b ? rec(b, a % b) : a;
+    }
+    return denominator / rec(numerator, denominator);
+}
 
+
+const myP5 = new p5(sketch, 'p5canvas');
+let message = '';
+let kVal = 10;
+let font
+let dVal = 10;
+let nVal;
+
+let color = false;
+let backgroundColor = '';
+let flowerColor = '';
+let textColor = '';
+
+
+function fontChange() {
+
+}
+
+function colorChange() {
+  color = true;
+  flowerColor = $('#flowerColor').val();
+  backgroundColor = $('#backgroundColor').val();
+  textColor = $('#textColor').val();
+  console.log(backgroundColor);
+}
+
+function updateInput(value) {
+  dVal = value;
+}
+// let clickMessage = function() {
+//   message = $('#message').val();
+//   console.log(message);
+// }
+
+
+console.log('this');
+console.log(backgroundColor);
 //
 // function setup() {
 // createCanvas(200,200);
@@ -33,4 +144,5 @@ const myP5 = new p5(sketch, 'p5canvas');
 //   sayWorking();
 // }
 
-let sayWorking = () => console.log("working");
+let sayWorking = () => console.log('working');
+sayWorking();

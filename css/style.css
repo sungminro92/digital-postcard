@@ -30,13 +30,45 @@ p {
   margin: 10 auto;
 }
 
+button {
+  width: 75px;
+  height: 25px;
+}
+
 #message {
-  width: 80%;
-  height: 85px;
-  min-width: 320px;
-  margin: 10px 0px;
-  border: 1px solid #888;
+  width: 90%;
+  height: 78%;
+  /* min-width: 320px; */
+  margin: 5px;
+  /* border: 1px solid #888; */
   outline: none;
   resize: none;
-  overflow: auto;
+  /* overflow: auto; */
+}
+
+#message:focus {
+  outline:none;
+}
+#submit {
+  width: 100px;
+  height: 20px;
+}
+
+#cardContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.inputCard {
+  width: 150px;
+  height: 250px;
+  background-color: white;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  margin: 10px;
+}
+
+#colorBox {
+  display: block;
+
 }
