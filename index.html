@@ -29,12 +29,18 @@
           <textarea id="message" name="message" placeholder="Type your message here!"></textarea>
         </div>
         <div class="inputCard" id="colorBox">
-          <label for="backgroundColor">Background:</label>
-          <input type="color" id="backgroundColor" name="backgroundColor" value="#e66465">
-          <label for="flowerColor">Flower:</label>
-          <input type="color" id="flowerColor" name="flowerColor" value="#FFFFFF">
+          <div class="colorPicker">
+            <label for="backgroundColor">Background:</label>
+            <input type="color" id="backgroundColor" name="backgroundColor" value="#e66465">
+          </div>
+          <div class="colorPicker">
+            <label for="flowerColor">Flower:</label>
+            <input type="color" id="flowerColor" name="flowerColor" value="#FFFFFF">
+          </div>
+          <div class="colorPicker">
           <label for="textColor">Message:</label>
           <input type="color" id="textColor" name="textColor" value="#e66465">
+          </div>
           <button id="colorSubmit" type="button" onclick="colorChange()">Apply</button>
          </div>
         <div class="inputCard" id="typeBox">
