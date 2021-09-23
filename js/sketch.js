@@ -41,7 +41,7 @@ const sketch = function(p) {
     p.strokeWeight(4);
     p.noFill();
     for(let a = 0; a < p.TWO_PI * reduceDenominator(n, d); a+= 0.01) {
-      let r = 150 * p.cos(k * a);
+      let r = flowerSize * p.cos(k * a);
       let x = r * p.cos(a);
       let y = r * p.sin(a);
       p.vertex(x, y);
@@ -64,24 +64,37 @@ const sketch = function(p) {
 
     // p.rect(100,100,50);
     // p.textFont(font);
+
+    p.text("(" + p.mouseX + ", " + p.mouseY + ")", p.mouseX, p.mouseY);
     p.noStroke();
-    p.textSize(20);
+    if(fontSize == undefined) {
+      p.textSize(15);
+    } else {
+      p.textSize(fontSize);
+    }
+    p.textSize(fontSize);
+    p.textFont(font);
     p.textWrap(p.WORD);
     p.textAlign(p.CENTER);
+
     if(color == false) {
       // p.fill(255);
-      p.fill('#e66465');
+      p.fill(255);
     } else if(color == true) {
       p.fill(textColor);
     };
     p.text(message,25, 350, 300, 300);
   }
 
-  p.keyPressed = function() {
-    message = $('#message').val();
+  p.mouseClicked = function() {
+    p.print(p.mouseX, p.mouseY);
   }
 
-};
+}
+// end of
+
+
+
 
 function reduceDenominator(numerator, denominator) {
     function rec(a, b) {
@@ -94,19 +107,48 @@ function reduceDenominator(numerator, denominator) {
 const myP5 = new p5(sketch, 'p5canvas');
 let message = '';
 let kVal = 10;
-let font
 let dVal = 10;
 let nVal;
+
+let flowerSize = 150;
 
 let color = false;
 let backgroundColor = '';
 let flowerColor = '';
 let textColor = '';
 
+let font = 'Helvetica';
+let fontSize;
 
-function fontChange() {
 
-}
+
+let addclass = 'selectedType';
+let typefaces = $('.typeface');
+typefaces.click(function() {
+
+    typefaces.removeClass(addclass);
+    $(this).addClass(addclass);
+    let selectedFont = $(this).attr("id");
+    if(selectedFont == 'sansSerif') {
+      font = 'Poppins';
+    } else if(selectedFont == 'serif') {
+      font = 'Playfair Display';
+    } else if(selectedFont == 'display') {
+      font = 'Concert One';
+    } else if(selectedFont == 'cursive') {
+      font = 'Italianno';
+    }  else if(selectedFont == 'handwritten') {
+      font = 'Indie Flower';
+    }
+    console.log("font changed to: " + font);
+});
+
+$('input').on('input', function() {
+  var size = $(this).val();
+  fontSize = parseInt(size);
+  console.log(fontSize);
+
+});
 
 function colorChange() {
   color = true;
@@ -119,11 +161,18 @@ function colorChange() {
 function updateInput(value) {
   dVal = value;
 }
-// let clickMessage = function() {
-//   message = $('#message').val();
-//   console.log(message);
-// }
 
+
+
+
+// document.getElementByClassName("typeface").addEventListener("click", random);
+
+//
+// function random(e) {
+//   console.log('haha');
+//   typefaces.removeClass(addclass);
+//   e.addclass(addclass);
+// }
 
 console.log('this');
 console.log(backgroundColor);

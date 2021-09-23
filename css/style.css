@@ -1,3 +1,12 @@
+/*
+font-family: 'Concert One', cursive;
+font-family: 'Indie Flower', cursive;
+font-family: 'Italianno', cursive;
+font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif;
+*/
+
+
 body {
   background-color: #f8f8ff;
   margin: 0;
@@ -47,8 +56,10 @@ button {
 }
 
 #message:focus {
+  border: 1px solid #e66465;
   outline:none;
 }
+
 #submit {
   width: 100px;
   height: 20px;
@@ -68,7 +79,46 @@ button {
   margin: 10px;
 }
 
+label {
+  /* make font visible and big */
+}
+
 #colorBox {
   display: block;
+}
 
+.typeface {
+  width: 85%;
+  height: 25px;
+  background-color: white;
+  border: 1px solid #FFC2C2;
+  margin: 10px auto;
+  font-size: 15px;
+  padding: auto;
+  cursor: pointer;
+}
+
+.selectedType {
+  background-color: #FFC2C2;
+}
+
+#sansSerif {
+  font-family: 'Poppins', sans-serif;
+}
+
+#serif {
+  font-family: 'Playfair Display', serif;
+}
+
+#display {
+  font-family: 'Concert One', cursive;
+}
+
+#cursive {
+  font-family: 'Italianno', cursive;
+  font-size: 20px;
+}
+
+#handwritten {
+  font-family: 'Indie Flower', cursive;
 }
