@@ -10,7 +10,7 @@ const sketch = function(p) {
 
   p.setup = function() {
     p.createCanvas(350,550);
-    sliderD = p.createSlider(1, 20, 10, 1);
+    sliderD = p.createSlider(1, 20, 6, 1);
     // sliderD.position(p.width-20, p.height + 50 );
     sliderN = p.createSlider(1, 20, 10, 1)
     // sliderN.position(p.width+150, p.height + 50 );
@@ -53,17 +53,19 @@ const sketch = function(p) {
 
 
     //CURVE LINE FOR STEM
-    // p.beginShape();
-    // p.curveVertex(5, 5);
-    // p.curveVertex(10, 20);
-    // p.curveVertex(50, 50);
-    // p.curveVertex(100, 100);
-    // // p.curveVertex(32, 91);
-    // p.endShape();
+
     // p.curve(100, 50, p.width/2 + 45, p.height/2, p.width/2+85, p.height-115, p.width/2 ,p.height);
 
     // p.rect(100,100,50);
     // p.textFont(font);
+
+    p.beginShape();
+    p.curveVertex(0, 0);
+    p.curveVertex(175, 178);
+    p.curveVertex(200, 500);
+    p.curveVertex(85, 800);
+    p.curveVertex (100, 1200);
+    p.endShape();
 
     p.text("(" + p.mouseX + ", " + p.mouseY + ")", p.mouseX, p.mouseY);
     p.noStroke();
@@ -86,10 +88,13 @@ const sketch = function(p) {
     p.text(message,25, 350, 300, 300);
   }
 
-  p.mouseClicked = function() {
-    p.print(p.mouseX, p.mouseY);
+  p.keyPressed = function() {
+    message = $('#message').val();
   }
 
+  p.mouseClicked = function() {
+
+  }
 }
 // end of
 
